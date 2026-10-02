@@ -1,3 +1,4 @@
-import "./styles/viewer.css";
-import "./ui/MarkdownContent";
-export {};
+import { DocViewerElement } from "./element";
+
+if (!customElements.get("doc-viewer")) customElements.define("doc-viewer", DocViewerElement);
+export { DocViewerElement };

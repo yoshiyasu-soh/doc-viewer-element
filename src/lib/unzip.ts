@@ -22,9 +22,15 @@ function isJunk(path: string): boolean {
   return path.startsWith("__MACOSX/") || (path.split("/").pop() ?? "").startsWith("._");
 }
 
-/** SKILL.md(最も浅い階層)を先頭に、残りはパス順に並べる */
+/** SKILL.md、次に README.md(いずれも最も浅い階層)を先頭に、残りはパス順に並べる */
 function sortFiles(files: DocFile[]): DocFile[] {
-  const rank = (f: DocFile) => (f.path.toLowerCase().split("/").pop() === "skill.md" ? f.path.split("/").length : 1000);
+  const rank = (f: DocFile) => {
+    const name = f.path.toLowerCase().split("/").pop();
+    const depth = f.path.split("/").length;
+    if (name === "skill.md") return depth;
+    if (name === "readme.md") return 100 + depth;
+    return 1000;
+  };
   return [...files].sort((a, b) => rank(a) - rank(b) || a.path.localeCompare(b.path));
 }
 

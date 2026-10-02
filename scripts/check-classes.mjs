@@ -24,8 +24,9 @@ for (const f of walk("src/ui").filter((f) => /\.(ts|tsx)$/.test(f))) {
   }
 }
 
-// CSS 文字列内ではセレクタが `.text-ink-secondary` または `.text-ink-secondary` のエスケープ形で現れる
-const missing = [...used].filter((c) => !css.includes(`.${c}`));
+const esc = (c) => c.replace(/[-/\\^$*+?.()|[\]{}]/g, "\\$&");
+// `hover:bg-x` のようなバリアント付きは CSS 内で `.hover\:bg-x` と出力されるため、直前が `.` か `:` のものを探す
+const missing = [...used].filter((c) => !new RegExp("[.:]" + esc(c) + "(?![\\w-])").test(css));
 if (withAlpha.length) console.error("アルファ修飾子は使えません:\n" + withAlpha.join("\n"));
 if (missing.length) console.error("CSS に出力されていないクラス:\n" + missing.join("\n"));
 if (withAlpha.length || missing.length) process.exit(1);

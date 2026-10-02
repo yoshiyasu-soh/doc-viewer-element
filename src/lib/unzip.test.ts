@@ -19,6 +19,16 @@ describe("unzipDocs", () => {
     expect(files.map((f) => f.path)).toEqual(["SKILL.md", "x/SKILL.md", "a.md", "z.md"]);
   });
 
+  it("SKILL.md が無ければ、最も浅い README.md を先頭にする", () => {
+    const { files } = unzipDocs(zip({ "b.md": "b", "docs/README.md": "deep", "README.md": "top", "a.md": "a" }));
+    expect(files.map((f) => f.path)).toEqual(["README.md", "docs/README.md", "a.md", "b.md"]);
+  });
+
+  it("SKILL.md と README.md が両方ある場合は SKILL.md が先頭", () => {
+    const { files } = unzipDocs(zip({ "README.md": "r", "SKILL.md": "s" }));
+    expect(files.map((f) => f.path)).toEqual(["SKILL.md", "README.md"]);
+  });
+
   it("__MACOSX・._ ファイルを除外して warnings に junk を記録する", () => {
     const { files, warnings } = unzipDocs(zip({ "a.md": "a", "__MACOSX/a.md": "x", "d/._a.md": "x" }));
     expect(files.map((f) => f.path)).toEqual(["a.md"]);
