@@ -1,0 +1,33 @@
+{
+  "name": "doc-viewer-element",
+  "version": "0.1.0",
+  "description": "Markdown / ZIP ドキュメントビューア(Web Component)",
+  "type": "module",
+  "license": "MIT",
+  "files": ["dist"],
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "build": "vite build",
+    "check:classes": "node scripts/check-classes.mjs",
+    "verify": "npm run typecheck && npm run test && npm run build && npm run check:classes"
+  },
+  "dependencies": {
+    "fflate": "^0.8.2",
+    "preact": "^10.24.0",
+    "react-markdown": "^10.1.0",
+    "rehype-raw": "^7.0.0",
+    "rehype-sanitize": "^6.0.0",
+    "remark-gfm": "^4.0.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.20",
+    "@types/hast": "^3.0.4",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.15",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.11",
+    "vitest": "^4.1.11"
+  }
+}
