@@ -12,6 +12,7 @@
   --docviewer-fg-muted: #71717a;
   --docviewer-accent: #84cc16;
   --docviewer-accent-ring: #65a30d;
+  --docviewer-danger: #dc2626;
   --docviewer-font: system-ui, -apple-system, "Segoe UI", "Hiragino Sans", "Yu Gothic UI", sans-serif;
   --docviewer-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   color: var(--docviewer-fg);
@@ -28,6 +29,7 @@
     --docviewer-fg-muted: #a1a1aa;
     --docviewer-accent: #a3e635;
     --docviewer-accent-ring: #bef264;
+    --docviewer-danger: #f87171;
   }
 }
 

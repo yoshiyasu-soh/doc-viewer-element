@@ -14,7 +14,7 @@ const css = readdirSync("dist")
   .join("\n");
 
 // トークン系のクラス(bg-surface, text-ink-secondary, border-border, ring-signal-ring など)
-const TOKEN = /\b(?:bg|text|border|ring|decoration|from|to|via|divide|fill|stroke)-(?:ink(?:-[a-z]+)?|surface(?:-2)?|border|signal(?:-ring)?)(\/\d+)?\b/g;
+const TOKEN = /\b(?:bg|text|border|ring|decoration|from|to|via|divide|fill|stroke)-(?:ink(?:-[a-z]+)?|surface(?:-2)?|border|signal(?:-ring)?|danger)(\/\d+)?\b/g;
 const used = new Set();
 const withAlpha = [];
 for (const f of walk("src/ui").filter((f) => /\.(ts|tsx)$/.test(f))) {

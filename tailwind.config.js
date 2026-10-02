@@ -14,7 +14,9 @@ export default {
           muted: "var(--docviewer-fg-muted)",
         },
         signal: { DEFAULT: "var(--docviewer-accent)", ring: "var(--docviewer-accent-ring)" },
+        danger: "var(--docviewer-danger)",
       },
+      boxShadow: { card: "0 4px 16px rgba(0, 0, 0, 0.14)" },
       fontFamily: {
         sans: ["var(--docviewer-font)"],
         display: ["var(--docviewer-font)"],
