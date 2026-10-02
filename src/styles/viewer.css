@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:host {
+  display: block;
+  --docviewer-bg: #ffffff;
+  --docviewer-bg-subtle: #f4f4f5;
+  --docviewer-border: #d4d4d8;
+  --docviewer-fg: #18181b;
+  --docviewer-fg-secondary: #3f3f46;
+  --docviewer-fg-muted: #71717a;
+  --docviewer-accent: #84cc16;
+  --docviewer-accent-ring: #65a30d;
+  --docviewer-font: system-ui, -apple-system, "Segoe UI", "Hiragino Sans", "Yu Gothic UI", sans-serif;
+  --docviewer-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  color: var(--docviewer-fg);
+  font-family: var(--docviewer-font);
+}
+
+@media (prefers-color-scheme: dark) {
+  :host {
+    --docviewer-bg: #18181b;
+    --docviewer-bg-subtle: #27272a;
+    --docviewer-border: #3f3f46;
+    --docviewer-fg: #fafafa;
+    --docviewer-fg-secondary: #d4d4d8;
+    --docviewer-fg-muted: #a1a1aa;
+    --docviewer-accent: #a3e635;
+    --docviewer-accent-ring: #bef264;
+  }
+}
+
+::highlight(doc-viewer-search) {
+  background-color: color-mix(in srgb, var(--docviewer-accent) 50%, transparent);
+  color: inherit;
+  text-decoration: underline;
+}
+.doc-mark {
+  background-color: color-mix(in srgb, var(--docviewer-accent) 50%, transparent);
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
