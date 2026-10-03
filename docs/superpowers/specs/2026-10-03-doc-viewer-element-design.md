@@ -114,9 +114,11 @@ fflate の展開側のみを取り込み、約 8KB gzip の増加を見込む。
 
 ## 9. リスク
 
-- `react-markdown` の Preact 互換: 動かなければ React 同梱に戻す(サイズ増)
-- Shadow DOM 内の Custom Highlight API: 上記のとおり `<mark>` 方式へフォールバック
-- `fullscreen`(Slides)が Shadow DOM 内の要素で動くか: 実機で確認し、動かなければホスト要素を対象にする
+- `react-markdown` の Preact 互換: `preact/compat` の alias で動作を確認済み(2026-10-03)
+- Shadow DOM 内の Custom Highlight API: Chromium で動作を確認済み(Preview 本文・見出しに強調が出る)。`<mark>` 方式へのフォールバックは不要だった
+- `fullscreen`(Slides): Shadow DOM 内の要素で動作し、`document.fullscreenElement` はホスト要素に丸められるため、判定には `shadowRoot.fullscreenElement` を使う(Chromium で確認済み)
+- バンドルサイズ: 当初見込み(約 60〜80KB gzip)を超え、約 157KB gzip(React/Preact 本体ではなく Markdown 処理が主因)。軽量化は機能とのトレードオフ(例: 生 HTML の描画に使う `rehype-raw` の除外)になるため、今回は機能を優先した
+- 動作確認は Chromium のみ。Firefox / Safari は未確認
 
 ## 10. 作業手順(概要。詳細は実装計画で定める)
 
