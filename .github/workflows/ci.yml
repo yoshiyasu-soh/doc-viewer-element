@@ -14,3 +14,7 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run verify
+      - name: demo の doc-viewer.js が最新か確認
+        run: |
+          node scripts/copy-to-demo.mjs
+          git diff --exit-code demo/doc-viewer.js || (echo "demo/doc-viewer.js が古いです。npm run build:demo を実行してコミットしてください" && exit 1)

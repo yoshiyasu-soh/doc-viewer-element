@@ -10,7 +10,9 @@ React などのフレームワークは不要で、プレーンな HTML に JS �
 - Shadow DOM で隔離され、ページ側のスタイルと干渉しない。複数配置も可能
 - 信頼できない Markdown を渡しても安全(`rehype-sanitize` で script・イベントハンドラ・`javascript:` リンクなどを除去)
 
-デモは [demo/index.html](demo/index.html) にあります(後述の手順でビルドしてから、リポジトリのルートを静的配信して開きます)。
+デモ(クローンやビルドなしで、ブラウザからそのまま動作を確認できます): https://yoshiyasu-soh.github.io/doc-viewer-element/demo/index.html
+
+デモの HTML・サンプル(Markdown / ZIP)・ビルド済みの `doc-viewer.js` は [demo/](demo/) にまとまっており、GitHub Pages で配信しています。
 
 ## 使い方
 
@@ -144,7 +146,9 @@ npm run verify      # 型チェック・テスト・ビルド・クラス検査
 node scripts/make-demo-zip.mjs   # demo/sample.zip を再生成(必要なときのみ)
 ```
 
-`npm run build` で `dist/doc-viewer.js` ができます。デモを開くには、リポジトリのルートを静的に配信します(例: `python -m http.server 4174`)。`http://localhost:4174/demo/index.html` を開いてください。
+`npm run build` で `dist/doc-viewer.js` ができます。デモ用には `npm run build:demo` で、ビルドして `demo/doc-viewer.js` にコピーします。コードを変更したら、`demo/doc-viewer.js` も更新してコミットしてください(GitHub Pages はこのファイルをそのまま配信します)。
+
+ローカルでデモを開くには、リポジトリのルートを静的に配信します(例: `python -m http.server 4174`)。`http://localhost:4174/demo/index.html` を開いてください。
 
 ## ライセンス
 
