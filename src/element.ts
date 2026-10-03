@@ -76,6 +76,12 @@ export class DocViewerElement extends HTMLElement {
     this.#reload();
   }
 
+  // DOM から外れたら描画を破棄する(document に付けたリスナーを残さない)。再接続時は読み込み直す
+  disconnectedCallback() {
+    this.#seq++; // 進行中の読み込み結果を捨てる
+    render(null, this.#mount);
+  }
+
   attributeChangedCallback(name: string) {
     if (name === "src") this.#reload();
     else this.#paint();
