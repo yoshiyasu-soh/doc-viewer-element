@@ -1,7 +1,7 @@
 import { defineConfig } from "vitest/config";
 
 export default defineConfig({
-  esbuild: { jsx: "automatic", jsxImportSource: "preact" },
+  oxc: { jsx: { runtime: "automatic", importSource: "preact" } },
   resolve: {
     alias: {
       react: "preact/compat",
