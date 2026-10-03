@@ -6,6 +6,26 @@ import { App, type ViewerState } from "./ui/App";
 import { mergeLabels, type Labels } from "./ui/labels";
 import type { ViewerTab } from "./ui/ViewerToolbar";
 
+// Tailwind 4 は内部変数の初期値を @property で登録するが、@property は Shadow DOM 内のスタイルシートでは
+// 無視される(登録はドキュメント単位)。未登録だと影・リング・グラデーションが無効になるため、
+// @property だけを取り出してページ側に 1 度だけ登録する
+const propertyRules = viewerCss.match(/@property\s+--[\w-]+\s*\{[^}]*\}/g)?.join("") ?? "";
+let propertiesRegistered = false;
+
+function registerDocumentProperties() {
+  if (propertiesRegistered || !propertyRules) return;
+  propertiesRegistered = true;
+  try {
+    const sheet = new CSSStyleSheet();
+    sheet.replaceSync(propertyRules);
+    document.adoptedStyleSheets = [...document.adoptedStyleSheets, sheet];
+  } catch {
+    const style = document.createElement("style");
+    style.textContent = propertyRules;
+    document.head.append(style);
+  }
+}
+
 export class DocViewerElement extends HTMLElement {
   static observedAttributes = ["src", "initial-tab"];
 
@@ -19,6 +39,7 @@ export class DocViewerElement extends HTMLElement {
 
   constructor() {
     super();
+    registerDocumentProperties();
     this.#root = this.attachShadow({ mode: "open" });
     try {
       const sheet = new CSSStyleSheet();

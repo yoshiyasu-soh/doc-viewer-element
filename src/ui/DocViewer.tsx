@@ -123,7 +123,7 @@ export default function DocViewer({ files, folderName = "files", initialTab = "p
       ref={rootRef}
       tabIndex={-1}
       onKeyDown={onRootKeyDown}
-      className="relative border border-border bg-surface focus:outline-none"
+      className="relative border border-border bg-surface focus:outline-hidden"
     >
       <ViewerToolbar
         uid={uid}
@@ -189,7 +189,7 @@ export default function DocViewer({ files, folderName = "files", initialTab = "p
             )}
           </div>
           {collapsible && (
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 flex h-24 items-end justify-center bg-gradient-to-t from-surface to-transparent pb-3">
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 flex h-24 items-end justify-center bg-linear-to-t from-surface to-transparent pb-3">
               <button
                 type="button"
                 onClick={() => setExpanded(true)}

@@ -71,7 +71,7 @@ export default function ViewerToolbar({ uid, tab, onTabChange, onOpenSearch, act
       >
         <SearchIcon className="h-3.5 w-3.5" />
         {labels.search}
-        <kbd className="hidden rounded border border-border px-1 font-mono text-[10px] text-ink-muted sm:inline">{isMac ? "⌘F" : "Ctrl+F"}</kbd>
+        <kbd className="hidden rounded-sm border border-border px-1 font-mono text-[10px] text-ink-muted sm:inline">{isMac ? "⌘F" : "Ctrl+F"}</kbd>
       </button>
       <div className="ml-auto flex items-center gap-2">{actions}</div>
     </div>

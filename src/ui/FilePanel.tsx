@@ -35,7 +35,7 @@ export default function FilePanel({ folderName, paths, selected, onSelect, onClo
           type="button"
           onClick={onClose}
           aria-label={labels.closeFileList}
-          className="rounded p-1 text-ink-secondary hover:bg-surface-2 hover:text-ink"
+          className="rounded-sm p-1 text-ink-secondary hover:bg-surface-2 hover:text-ink"
         >
           <ArrowLeftIcon className="h-4 w-4" />
         </button>
@@ -63,7 +63,7 @@ export default function FilePanel({ folderName, paths, selected, onSelect, onClo
             }
           }}
           placeholder={labels.filterPlaceholder}
-          className="w-full bg-transparent py-2 pl-8 pr-3 text-xs text-ink placeholder:text-ink-muted focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-signal-ring"
+          className="w-full bg-transparent py-2 pl-8 pr-3 text-xs text-ink placeholder:text-ink-muted focus:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-signal-ring"
         />
       </label>
       {visible.length === 0 ? (

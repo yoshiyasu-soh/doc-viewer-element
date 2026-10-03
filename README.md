@@ -134,7 +134,7 @@ Custom Highlight API(Preview / Slides 本文の検索ハイライト)に対応�
 
 ## サイズ
 
-`dist/doc-viewer.js` は約 141KB(gzip)です。Markdown の処理系(生 HTML の描画を含む)を同梱しているためです。
+`dist/doc-viewer.js` は約 150KB(gzip)です。Markdown の処理系(生 HTML の描画を含む)を同梱しているためです。
 
 ## 開発
 

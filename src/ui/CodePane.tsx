@@ -20,7 +20,7 @@ const CodePane = forwardRef<HTMLPreElement, Props>(function CodePane({ source, q
       ref={ref}
       tabIndex={0}
       aria-label={labels.sourceView}
-      className="m-0 overflow-x-hidden whitespace-pre-wrap break-words p-4 font-mono text-[13px] leading-relaxed text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-signal-ring"
+      className="m-0 overflow-x-hidden whitespace-pre-wrap wrap-break-word p-4 font-mono text-[13px] leading-relaxed text-ink focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-signal-ring"
     >
       {lines.map((text, i) => (
         <div key={i} id={`L${i + 1}`} className="flex scroll-mt-4">

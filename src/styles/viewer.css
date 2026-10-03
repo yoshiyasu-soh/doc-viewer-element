@@ -1,6 +1,39 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss" source("../ui");
+
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --color-surface-2: var(--docviewer-bg-subtle);
+  --color-surface: var(--docviewer-bg);
+
+  --color-border: var(--docviewer-border);
+
+  --color-ink: var(--docviewer-fg);
+  --color-ink-secondary: var(--docviewer-fg-secondary);
+  --color-ink-muted: var(--docviewer-fg-muted);
+
+  --color-signal: var(--docviewer-accent);
+  --color-signal-ring: var(--docviewer-accent-ring);
+
+  --color-danger: var(--docviewer-danger);
+
+  --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.14);
+
+  --font-sans: var(--docviewer-font);
+  --font-display: var(--docviewer-font);
+  --font-mono: var(--docviewer-mono);
+}
+
+/* 色を指定していない罫線も、ライブラリの罫線色に揃える */
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-border);
+  }
+}
 
 :host {
   display: block;

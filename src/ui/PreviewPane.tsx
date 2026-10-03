@@ -60,7 +60,7 @@ export default function PreviewPane({ doc, query, onRequestExpand }: Props) {
 
   if (doc.file.kind === "text") {
     return (
-      <pre className="m-0 whitespace-pre-wrap break-words p-4 font-mono text-[13px] leading-relaxed text-ink">{doc.file.source}</pre>
+      <pre className="m-0 whitespace-pre-wrap wrap-break-word p-4 font-mono text-[13px] leading-relaxed text-ink">{doc.file.source}</pre>
     );
   }
 

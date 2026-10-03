@@ -78,7 +78,7 @@ export default function SearchPalette({ doc, initialQuery, onQueryChange, onSele
   const titleOf = (id: string) => doc.sections.find((s) => s.id === id)?.title ?? doc.file.path;
 
   return (
-    <div ref={rootRef} className="absolute inset-x-3 top-12 z-20 border border-border bg-surface shadow-card sm:left-auto sm:w-[28rem]">
+    <div ref={rootRef} className="absolute inset-x-3 top-12 z-20 border border-border bg-surface shadow-card sm:left-auto sm:w-md">
       <div className="flex items-center gap-2 border-b border-border px-3">
         <SearchIcon className="h-4 w-4 shrink-0 text-ink-muted" />
         <input
@@ -93,14 +93,14 @@ export default function SearchPalette({ doc, initialQuery, onQueryChange, onSele
           onInput={(e) => setInput(e.currentTarget.value)}
           onKeyDown={onKeyDown}
           placeholder={labels.searchPlaceholder}
-          className="min-w-0 flex-1 bg-transparent py-2.5 text-sm text-ink placeholder:text-ink-muted focus:outline-none"
+          className="min-w-0 flex-1 bg-transparent py-2.5 text-sm text-ink placeholder:text-ink-muted focus:outline-hidden"
         />
         {hasQuery && (
           <span className="shrink-0 font-mono text-[11px] text-ink-secondary" aria-live="polite">
             {hits.length === 0 ? labels.noMatch : format(labels.matches, { n: hits.length })}
           </span>
         )}
-        <button type="button" onClick={onClose} aria-label={labels.closeSearch} className="rounded p-1 text-ink-secondary hover:bg-surface-2 hover:text-ink">
+        <button type="button" onClick={onClose} aria-label={labels.closeSearch} className="rounded-sm p-1 text-ink-secondary hover:bg-surface-2 hover:text-ink">
           <CloseIcon className="h-4 w-4" />
         </button>
       </div>

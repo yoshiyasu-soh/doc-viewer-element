@@ -108,7 +108,7 @@ export default function SlidesPane({ doc, index, onIndexChange, query, keysEnabl
         ref={bodyRef}
         tabIndex={0}
         aria-label={slideLabel(index)}
-        className={`overflow-y-auto p-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-signal-ring ${
+        className={`overflow-y-auto p-6 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-signal-ring ${
           fullscreen ? "flex-1 px-[8vw] py-10" : "h-[420px]"
         }`}
       >
